@@ -17,7 +17,7 @@ def get_file_content(filePath):
         return fp.read()
 
 # 识别本地文件
-test = client.asr(get_file_content('test.pcm'), 'pcm', 16000, {
+test = client.asr(get_file_content('MCF_voice.pcm'), 'pcm', 16000, {
     'dev_pid': 1536,
 })
 
