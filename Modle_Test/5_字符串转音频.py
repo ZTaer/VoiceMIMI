@@ -12,10 +12,10 @@ client = AipSpeech(APP_ID, API_KEY, SECRET_KEY)
 
 #   #   文字转语音
 def str_to_voice():
-    result  = client.synthesis("我只想说在坐的各位都是垃圾", 'zh', 1, {
-       'spd': 3,'pit':6, 'vol': 4, 'per':4,
+    result  = client.synthesis("everyone is really good", 'zh', 1, {
+       'spd': 5,'pit':6, 'vol': 4, 'per':4,
     })
-
+    print(result)
     # 识别正确返回语音二进制 错误则返回dict 参照下面错误码
     if not isinstance(result, dict): #  判断是否返回是一个字典类型
         with open('auido.wav', 'wb') as f:

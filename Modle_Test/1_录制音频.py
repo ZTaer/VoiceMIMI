@@ -3,6 +3,7 @@
 
 import pyaudio
 import wave
+import os
 
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
