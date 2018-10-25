@@ -131,8 +131,9 @@ def translation( content , lg='en' ):
     return str(dst)
 
 def strTo_voice( translationStr ):
+
     result = client.synthesis(translationStr, 'zh', 1, {
-        'spd': 5, 'pit': 6, 'vol': 4, 'per': 4,
+        'spd': 4, 'pit': 6, 'vol': 4, 'per': 4,
     })
 
     # 识别正确返回语音二进制 错误则返回dict 参照下面错误码
@@ -149,10 +150,18 @@ def strTo_voice( translationStr ):
 #           调用strTo_voice( translationStr )函数进行语音合成,返回语音文件Play_voice.wav
 #           直接使用os.system('Play_voice.wav')进行语音播放
 
+def play_wav( files ): # 在后台播放wav音频
+    ffmpegroad = os.getcwd() + os.sep + 'ffmpeg' + os.sep + 'bin;'
+    setpath = "set path=%path%;{}".format(ffmpegroad)
+    ffmpegset = "ffplay -nodisp -autoexit {}".format(os.getcwd() + os.sep + files) # ffplay 无弹窗播放 播放完退出 播放文件
+    cmd = "%s &&  %s" % (setpath, ffmpegset) # 设置ffmpeg环境变量与播放文件命连续执行( 因为环境变量只能临时设置 )
+    a = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+
 def vTplay(times=5 , lg='en'):
     recodeVoice(times)
     MCF_voiceStr = voiceTo_str('MCF_voice.pcm')
     translationStr = translation(MCF_voiceStr, lg)
     print(MCF_voiceStr, "--", translationStr)
     strTo_voice(translationStr)
-    os.system("Play_voice.wav")
+    play_wav("Play_voice.wav") # 播放音频

@@ -21,8 +21,7 @@ if __name__=="__main__":
         choose = input('选择: ')
         if choose == '1':
             times = int(input('请输入录音时间: '))
-            s = vTplay(times)
-            s.wait()
+            vTplay(times)
         elif choose == 'q':
             print("谢谢使用此程序,下个版本会变得更好!")
             break
