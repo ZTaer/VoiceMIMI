@@ -38,7 +38,7 @@ client = AipSpeech(APP_ID, API_KEY, SECRET_KEY)
 #                   语音合成
 #                   返回语音文件Play_voice.wav
 #   #   问题: 语音播放
-#                   播放语音合成的文件1
+#                   在后台播放语音合成的文件
 def wav_to_pcm(files):
     ffmpegroad = os.getcwd()+os.sep+'ffmpeg'+os.sep+'bin;'
     setpath = "set path=%path%;{}".format(ffmpegroad)
@@ -142,13 +142,7 @@ def strTo_voice( translationStr ):
             f.write(result)
 
 
-#   #   主体思路总结
-#       调用vTplay函数(接受2个参数,times录制时间,lg='en'要求翻译的语言种类( 默认为英语 ))
-#           调用recodeVoice( times , lg='auto' )函数开始录音,返回录音文件MCF_voice.pcm( 转码在函数内部完成! )
-#           调用voiceTo_str( 'MCF_voice.pcm' )函数进行语音识别，返回识别后的字符串MCF_voiceStr变量
-#           调用translation( MCF_voiceStr,lg='en' )函数进行翻译,返回翻译后的字符串translationStr变量
-#           调用strTo_voice( translationStr )函数进行语音合成,返回语音文件Play_voice.wav
-#           直接使用os.system('Play_voice.wav')进行语音播放
+
 
 def play_wav( files ): # 在后台播放wav音频
     ffmpegroad = os.getcwd() + os.sep + 'ffmpeg' + os.sep + 'bin;'
@@ -157,6 +151,13 @@ def play_wav( files ): # 在后台播放wav音频
     cmd = "%s &&  %s" % (setpath, ffmpegset) # 设置ffmpeg环境变量与播放文件命连续执行( 因为环境变量只能临时设置 )
     a = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
+#   #   核心逻辑: vTplay()函数思路
+#       调用vTplay函数(接受2个参数,times录制时间,lg='en'要求翻译的语言种类( 默认为英语 ))
+#           调用recodeVoice( times , lg='auto' )函数开始录音,返回录音文件MCF_voice.pcm( 转码在函数内部完成! )
+#           调用voiceTo_str( 'MCF_voice.pcm' )函数进行语音识别，返回识别后的字符串MCF_voiceStr变量
+#           调用translation( MCF_voiceStr,lg='en' )函数进行翻译,返回翻译后的字符串translationStr变量
+#           调用strTo_voice( translationStr )函数进行语音合成,返回语音文件Play_voice.wav
+#           直接使用os.system('Play_voice.wav')进行语音播放
 
 def vTplay(times=5 , lg='en'):
     recodeVoice(times)
