@@ -4,7 +4,6 @@
 from vTplays import *
 
 #   #   主体思路总结
-#   交互界面控制参数:
 #   while循环:
 #       选择功能(q接受程序):
 #           1.语音翻译( 目前只支持英语 )
@@ -14,10 +13,10 @@ from vTplays import *
 
 if __name__=="__main__":
     while True:
-        print("")
-        print("1.语音翻译( 目前只支持英语 )")
-        print("2.文字翻译( 目前只支持中文-英文翻译 )")
-        print("3.播报文字( 目前只支持中文-英文发音 )")
+        print("VoiceMIMIv2.0 --- 20190325")
+        print("1.语音翻译( 支持: 中文 -> 英语 )")
+        print("2.文字翻译( 支持:)")
+        print("3.播报文字( 支持:中文-英文 )")
         choose = input('选择: ')
         if choose == '1':
             times = int(input('请输入录音时间: '))

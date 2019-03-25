@@ -14,7 +14,7 @@ def baidu_translate(content):
     myurl = '/api/trans/vip/translate'
     q = content
     fromLang = 'auto'  # 源语言
-    toLang = 'en'  # 翻译后的语言
+    toLang = 'wyw'  # 翻译后的语言
     salt = random.randint(32768, 65536)
     sign = appid + q + str(salt) + secretKey
     sign = hashlib.md5(sign.encode()).hexdigest()
