@@ -13,5 +13,5 @@ ffmpeg -y -f s16le -ac 1 -ar 44100 -i test44.pcm  -acodec pcm_s16le -f s16le -ac
 mp3 文件转 16K 16bits 位深的单声道 pcm文件
 ffmpeg -y  -i aidemo.mp3  -acodec pcm_s16le -f s16le -ac 1 -ar 16000 16k.pcm 
 
-// -acodec pcm_s16le pcm_s16le 16bits 编码器 // -f s16le 保存为16bits pcm格式 // -ac 1 单声道 // -ar 16000 16000采样率1
+// -acodec pcm_s16le pcm_s16le 16bits 编码器 // -f s16le 保存为16bits pcm格式 // -ac 1 单声道 // -ar 16000 16000采样率12
 
