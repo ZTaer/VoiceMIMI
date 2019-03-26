@@ -1,0 +1,17 @@
+http://www.kuitao8.com/20180120/4670.shtml
+
+cmd命令临时改变PATH环境变量：set path=%path%;f:test\bin;
+
+百度语音识别wav格式要求
+
+wav 文件转 16k 16bits 位深的单声道pcm文件
+ffmpeg -y  -i 16k.wav  -acodec pcm_s16le -f s16le -ac 1 -ar 16000 16k.pcm 
+
+44100 采样率 单声道 16bts pcm 文件转 16000采样率 16bits 位深的单声道pcm文件
+ffmpeg -y -f s16le -ac 1 -ar 44100 -i test44.pcm  -acodec pcm_s16le -f s16le -ac 1 -ar 16000 16k.pcm 
+
+mp3 文件转 16K 16bits 位深的单声道 pcm文件
+ffmpeg -y  -i aidemo.mp3  -acodec pcm_s16le -f s16le -ac 1 -ar 16000 16k.pcm 
+
+// -acodec pcm_s16le pcm_s16le 16bits 编码器 // -f s16le 保存为16bits pcm格式 // -ac 1 单声道 // -ar 16000 16000采样率1
+
