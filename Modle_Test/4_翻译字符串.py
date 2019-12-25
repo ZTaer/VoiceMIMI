@@ -37,7 +37,6 @@ def baidu_translate(content):
         if httpClient:
             httpClient.close()
 
-
 if __name__ == '__main__':
     while True:
         print("请输入要翻译的内容,如果退出输入q")
